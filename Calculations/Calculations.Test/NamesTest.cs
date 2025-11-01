@@ -23,7 +23,7 @@ namespace Calculations.Test
                 .And.StartWith("John")
                 .And.EndWith("Doe")
                 .And.MatchRegex("[A-Z]{1}[a-z]+ [A-Z]{1}[a-z]+")
-                .And.BeOfType<string>();
+                .And.BeOfType<string>(); 
         }
 
         [Fact]

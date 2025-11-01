@@ -14,7 +14,22 @@ namespace Calculations.Test
         public IReadOnlyCollection<TTestCollection> OrderTestCollections<TTestCollection>(
             IReadOnlyCollection<TTestCollection> testCollections) where TTestCollection : ITestCollection
         {
-            return testCollections.OrderBy(tc => tc.TestCollectionDisplayName).CastOrToReadOnlyCollection();
+            //return testCollections.OrderBy(tc => tc.TestCollectionDisplayName).CastOrToReadOnlyCollection();
+
+            return testCollections.OrderBy(tc =>
+            {
+                Console.WriteLine("Test Ordering...");
+                tc.Traits.TryGetValue("Category", out var categoryValues);
+
+                if (categoryValues != null && categoryValues.Any())
+                {
+                    return categoryValues.FirstOrDefault() ?? "";
+                }
+                else
+                {
+                    return tc.TestCollectionDisplayName;
+                }
+            }).CastOrToReadOnlyCollection();
         }
     }
 }
