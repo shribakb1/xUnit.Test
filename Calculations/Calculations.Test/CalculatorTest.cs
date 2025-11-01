@@ -41,7 +41,8 @@ namespace Calculations.Test
 
 
         [Theory]
-        [MemberData(nameof(TestDataShare.GetDecimalAddTestData), MemberType = typeof(TestDataShare))]
+        [AddData]
+        //[MemberData(nameof(TestDataShare.GetDecimalAddTestData), MemberType = typeof(TestDataShare))]
         public void Add_GivenTwoDecimalNumbers_ReturnsSum(decimal a, decimal b, decimal expected)
         {
             // Arrange
