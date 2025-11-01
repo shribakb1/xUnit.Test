@@ -34,5 +34,10 @@ namespace Calculations
                 yield return first;
             }
         }
+
+        public bool IsOdd(int number)
+        {
+            return number % 2 == 0;
+        }
     }
 }

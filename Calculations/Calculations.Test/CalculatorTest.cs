@@ -24,6 +24,36 @@ namespace Calculations.Test
             testOutputHelper.WriteLine("Test Executed");
         }
 
+        [Theory]
+        [InlineData(1, 2, 3)]
+        [InlineData(-1, 3, 2)]
+        public void Add_GivenTwoNumbers_ReturnsSum(int a, int b, int expected)
+        {
+            // Arrange
+            var calculator = calcutorFixture.calculator;
+
+            // Act
+            var result = calculator.Add(a, b);
+
+            // Assert
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData(2, true)]
+        [InlineData(-1, false)]
+        public void IsOdd_GivenNumber_ReturnsTrueOrFalse(int number, bool expected)
+        {
+            // Arrange
+            var calculator = calcutorFixture.calculator;
+
+            // Act
+            var result = calculator.IsOdd(number);
+
+            // Assert
+            Assert.Equal(expected, result);
+        }
+
         [Fact]
         [Trait("Category", "Calculator")]
         public void Add_GivenTwoDecimalValues_ReturnsRoundedSum()
