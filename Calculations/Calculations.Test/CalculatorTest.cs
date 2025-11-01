@@ -39,6 +39,21 @@ namespace Calculations.Test
             Assert.Equal(expected, result);
         }
 
+
+        [Theory]
+        [MemberData(nameof(TestDataShare.GetDecimalAddTestData), MemberType = typeof(TestDataShare))]
+        public void Add_GivenTwoDecimalNumbers_ReturnsSum(decimal a, decimal b, decimal expected)
+        {
+            // Arrange
+            var calculator = calcutorFixture.calculator;
+
+            // Act
+            var result = calculator.Add(a, b);
+
+            // Assert
+            Assert.Equal(expected, result);
+        }
+
         [Theory]
         [InlineData(2, true)]
         [InlineData(-1, false)]
