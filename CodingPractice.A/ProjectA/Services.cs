@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace ProjectA
 {
-    internal class Services
+    public interface IOrderService
     {
+        Task<Order> CreateOrderAsync(int customerId, List<int> productIds);
+        Task<decimal> CalculateTotalAmountAsync(List<int> productsIds);
     }
 }

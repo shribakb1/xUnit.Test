@@ -3,11 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FluentAssertions;
 
 namespace Calculations.Test
 {
     public class NamesTest
     {
+        [Fact]
+        public void MakeFullName_GivenEmptyFirstName_ResultMatchesFluentCheks()
+        {
+            // Arrange
+            var names = new Names();
+
+            // Act
+            var fullName = names.MakeFullName("John", "Doe");
+
+            // Assert
+            fullName.Should().NotBeNullOrEmpty()
+                .And.StartWith("John")
+                .And.EndWith("Doe")
+                .And.MatchRegex("[A-Z]{1}[a-z]+ [A-Z]{1}[a-z]+")
+                .And.BeOfType<string>();
+        }
+
         [Fact]
         public void MakeFullName_GivenFirstAndLastName_ReturnsFullName()
         {
